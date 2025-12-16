@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RecruitOps360 - Extended Live Demo | Recruitin B.V.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #4A4A4A 0%, #2C2C2C 100%);
+            overflow-x: hidden;
+            color: #333;
+        }
+        
+        .demo-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .header {
+            background: linear-gradient(90deg, #F5A623, #FF8C42);
+            padding: 1rem 2rem;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 25px rgba(245, 166, 35, 0.3);
+            position: relative;
+            border-bottom: 3px solid #4A4A4A;
+            z-index: 1000;
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header .subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+        
+        .main-content {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .demo-section {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .demo-section.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .demo-section.prev {
+            transform: translateX(-100%);
+        }
+        
+        /* SECTION 1: AUTOMATION FLOW */
+        .automation-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex: 1;
+        }
+        
+        .flow-step {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            min-width: 200px;
+            max-width: 220px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transform: translateY(60px);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 3px solid transparent;
+            position: relative;
+        }
+        
+        .flow-step::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, #F5A623, #4A4A4A);
+            border-radius: 23px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .flow-step.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .flow-step.active::before {
+            opacity: 1;
+        }
+        
+        .flow-step.processing {
+            background: linear-gradient(135deg, #F5A623 0%, #FF8C42 100%);
+            color: white;
+            transform: translateY(0) scale(1.05);
+            box-shadow: 0 20px 40px rgba(245, 166, 35, 0.3);
+        }
+        
+        .flow-arrow {
+            font-size: 2rem;
+            color: #F5A623;
+            opacity: 0;
+            transition: all 0.5s ease;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-weight: bold;
+        }
+        
+        .flow-arrow.active {
+            opacity: 1;
+        }
+        
+        .step-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #4A4A4A;
+            line-height: 1.3;
+        }
+        
+        .processing .step-title {
+            color: white;
+        }
+        
+        .step-description {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.4;
+        }
+        
+        .processing .step-description {
+            color: rgba(255,255,255,0.95);
+        }
+        
+        /* SECTION 2: FIGMA DESIGNS */
+        .figma-section {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 3px solid #F5A623;
+            overflow: hidden;
+        }
+        
+        .figma-header {
+            background: linear-gradient(135deg, #F5A623, #FF8C42);
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        
+        .figma-content {
+            height: 600px;
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+        }
+        
+        .figma-iframe {
+            flex: 1;
+            border: none;
+            border-radius: 10px;
+            background: #f8f9fa;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* SECTION 3: CANVA DESIGNS */
+        .canva-section {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 3px solid #F5A623;
+            overflow: hidden;
+        }
+        
+        .canva-header {
+            background: linear-gradient(135deg, #F5A623, #FF8C42);
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        
+        .canva-content {
+            height: 600px;
+            padding: 1rem;
+        }
+        
+        .canva-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+            background: #f8f9fa;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* SECTION 4: TYPEFORM DEMO */
+        .typeform-section {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 3px solid #F5A623;
+            overflow: hidden;
+        }
+        
+        .typeform-header {
+            background: linear-gradient(135deg, #F5A623, #FF8C42);
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        
+        .typeform-content {
+            height: 600px;
+            padding: 1rem;
+        }
+        
+        .typeform-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+            background: #f8f9fa;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* SECTION 5: METRICS DASHBOARD */
+        .metrics-section {
+            display: flex;
+            gap: 2rem;
+            flex: 1;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .metrics-card {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 2rem;
+            min-width: 300px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            border: 3px solid #F5A623;
+            transform: translateY(40px);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+        
+        .metrics-card.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .metrics-title {
+            margin-bottom: 1.5rem; 
+            color: #4A4A4A;
+            font-size: 1.4rem;
+            font-weight: 600;
+            text-align: center;
+            border-bottom: 2px solid #F5A623;
+            padding-bottom: 0.5rem;
+        }
+        
+        .metric-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            align-items: center;
+        }
+        
+        .metric-label {
+            color: #4A4A4A;
+            font-weight: 500;
+        }
+        
+        .metric-value {
+            font-weight: 700;
+            color: #F5A623;
+            font-size: 1.1rem;
+        }
+        
+        /* NAVIGATION */
+        .demo-navigation {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 1000;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 2px solid #F5A623;
+        }
+        
+        .nav-btn {
+            background: linear-gradient(135deg, #F5A623, #FF8C42);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            min-width: 100px;
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 166, 35, 0.4);
+        }
+        
+        .nav-btn:active {
+            transform: translateY(0);
+        }
+        
+        .nav-btn.active {
+            background: linear-gradient(135deg, #4A4A4A, #2C2C2C);
+            box-shadow: 0 6px 20px rgba(74, 74, 74, 0.4);
+        }
+        
+        .section-title {
+            text-align: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .recruitin-badge {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: #4A4A4A;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px solid #F5A623;
+            z-index: 1000;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .pulse {
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 20px 40px rgba(245, 166, 35, 0.3); }
+            50% { box-shadow: 0 25px 50px rgba(245, 166, 35, 0.5); }
+        }
+        
+        .processing {
+            animation: glow 2s infinite;
+        }
+        
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 1200px) {
+            .automation-flow {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .flow-arrow {
+                transform: rotate(90deg);
+                margin: 0.5rem 0;
+            }
+            
+            .figma-content {
+                flex-direction: column;
+                height: auto;
+                min-height: 500px;
+            }
+            
+            .metrics-section {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .metrics-card {
+                min-width: auto;
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.6rem;
+            }
+            
+            .demo-navigation {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-btn {
+                font-size: 0.8rem;
+                padding: 0.6rem 1rem;
+                min-width: 80px;
+            }
+            
+            .figma-content, .canva-content, .typeform-content {
+                height: 400px;
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="header">
+            <h1>🚀 RecruitOps360 - Extended Live Demo</h1>
+            <div class="subtitle">Complete design & automation showcase door Recruitin B.V.</div>
+        </div>
+        
+        <div class="recruitin-badge">
+            Powered by Recruitin B.V.
+        </div>
+        
+        <div class="main-content">
+            <!-- SECTION 1: AUTOMATION FLOW -->
+            <div class="demo-section active" id="section-1">
+                <div class="section-title">Automation Flow Overzicht</div>
+                <div class="automation-flow">
+                    <div class="flow-step" id="step1">
+                        <div class="step-icon">📋</div>
+                        <div class="step-title">Recruitment Scan</div>
+                        <div class="step-description">Bedrijf vult ROI assessment in</div>
+                    </div>
+                    
+                    <div class="flow-arrow">→</div>
+                    
+                    <div class="flow-step" id="step2">
+                        <div class="step-icon">🎯</div>
+                        <div class="step-title">Lead Registratie</div>
+                        <div class="step-description">Data wordt vastgelegd</div>
+                    </div>
+                    
+                    <div class="flow-arrow">→</div>
+                    
+                    <div class="flow-step" id="step3">
+                        <div class="step-icon">📊</div>
+                        <div class="step-title">CRM Integratie</div>
+                        <div class="step-description">Deal aangemaakt in Pipedrive</div>
+                    </div>
+                    
+                    <div class="flow-arrow">→</div>
+                    
+                    <div class="flow-step" id="step4">
+                        <div class="step-icon">📧</div>
+                        <div class="step-title">Email Automation</div>
+                        <div class="step-description">6-email follow-up sequentie</div>
+                    </div>
+                    
+                    <div class="flow-arrow">→</div>
+                    
+                    <div class="flow-step" id="step5">
+                        <div class="step-icon">🤝</div>
+                        <div class="step-title">Demo Booking</div>
+                        <div class="step-description">Gesprek automatisch ingepland</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 2: FIGMA DESIGNS -->
+            <div class="demo-section" id="section-2">
+                <div class="section-title">Live Figma Designs</div>
+                <div class="figma-section">
+                    <div class="figma-header">
+                        🎨 Website Wireframes & ROI Calculator - Real-time bewerking
+                    </div>
+                    <div class="figma-content">
+                        <iframe class="figma-iframe" 
+                                src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fonline-whiteboard%2Fcreate-diagram%2F39e216b7-487b-4baf-bdcf-e3553d6d1e04" 
+                                allowfullscreen>
+                        </iframe>
+                        <iframe class="figma-iframe" 
+                                src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fonline-whiteboard%2Fcreate-diagram%2F2cc6cc0c-5624-4c56-b174-1b8adcde6eae" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 3: CANVA DESIGNS -->
+            <div class="demo-section" id="section-3">
+                <div class="section-title">Live Canva Ad Editor</div>
+                <div class="canva-section">
+                    <div class="canva-header">
+                        🎯 Facebook Advertentie - Live bewerking mogelijk
+                    </div>
+                    <div class="canva-content">
+                        <iframe class="canva-iframe" 
+                                src="https://www.canva.com/d/nDj2Nk47XbCH6cq" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 4: TYPEFORM ASSESSMENT -->
+            <div class="demo-section" id="section-4">
+                <div class="section-title">Live Assessment Tool</div>
+                <div class="typeform-section">
+                    <div class="typeform-header">
+                        📋 RecruitmentAPK Assessment - Werkende demo
+                    </div>
+                    <div class="typeform-content">
+                        <iframe class="typeform-iframe" 
+                                src="https://form.typeform.com/to/YUJCxF86?typeform-medium=embed-snippet" 
+                                frameborder="0" 
+                                allow="camera; microphone; autoplay; encrypted-media;">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 5: METRICS DASHBOARD -->
+            <div class="demo-section" id="section-5">
+                <div class="section-title">Performance Dashboard</div>
+                <div class="metrics-section">
+                    <div class="metrics-card" id="metrics-1">
+                        <h3 class="metrics-title">📈 Lead Generation</h3>
+                        <div class="metric-item">
+                            <span class="metric-label">Conversie Ratio:</span>
+                            <span class="metric-value">23,5%</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Cost per Lead:</span>
+                            <span class="metric-value">€18,50</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Monthly Leads:</span>
+                            <span class="metric-value">67</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Lead Quality Score:</span>
+                            <span class="metric-value">8,7/10</span>
+                        </div>
+                    </div>
+                    
+                    <div class="metrics-card" id="metrics-2">
+                        <h3 class="metrics-title">💰 Business Impact</h3>
+                        <div class="metric-item">
+                            <span class="metric-label">Gemiddelde Deal:</span>
+                            <span class="metric-value">€35.000</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Afsluitingstijd:</span>
+                            <span class="metric-value">14 dagen</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Pipeline Waarde:</span>
+                            <span class="metric-value">€127.000</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">ROI Verbetering:</span>
+                            <span class="metric-value">1.247%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="metrics-card" id="metrics-3">
+                        <h3 class="metrics-title">⚡ Efficiency Gains</h3>
+                        <div class="metric-item">
+                            <span class="metric-label">Time-to-Hire:</span>
+                            <span class="metric-value">-68%</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Recruitment Kosten:</span>
+                            <span class="metric-value">-45%</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Process Automation:</span>
+                            <span class="metric-value">89%</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Client Satisfaction:</span>
+                            <span class="metric-value">9,4/10</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="demo-navigation">
+        <button class="nav-btn active" onclick="showSection(1)">Flow</button>
+        <button class="nav-btn" onclick="showSection(2)">Figma</button>
+        <button class="nav-btn" onclick="showSection(3)">Canva</button>
+        <button class="nav-btn" onclick="showSection(4)">Assessment</button>
+        <button class="nav-btn" onclick="showSection(5)">Metrics</button>
+        <button class="nav-btn" onclick="startAutoDemo()">🎬 Auto</button>
+        <button class="nav-btn" onclick="toggleFullscreen()">📺 Full</button>
+    </div>
+    
+    <script>
+        let currentSection = 1;
+        let autoDemo = null;
+        let flowDemo = null;
+        
+        function showSection(sectionNum) {
+            // Clear any running demos
+            clearInterval(autoDemo);
+            clearInterval(flowDemo);
+            
+            // Update navigation
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.nav-btn')[sectionNum - 1].classList.add('active');
+            
+            // Update sections
+            document.querySelectorAll('.demo-section').forEach((section, index) => {
+                section.classList.remove('active', 'prev');
+                if (index + 1 === sectionNum) {
+                    section.classList.add('active');
+                } else if (index + 1 < sectionNum) {
+                    section.classList.add('prev');
+                }
+            });
+            
+            currentSection = sectionNum;
+            
+            // Special animations for specific sections
+            setTimeout(() => {
+                if (sectionNum === 1) {
+                    startFlowAnimation();
+                } else if (sectionNum === 5) {
+                    animateMetrics();
+                }
+            }, 300);
+        }
+        
+        function startFlowAnimation() {
+            let stepIndex = 0;
+            const steps = document.querySelectorAll('.flow-step');
+            const arrows = document.querySelectorAll('.flow-arrow');
+            
+            // Reset all steps
+            steps.forEach(step => {
+                step.classList.remove('active', 'processing', 'pulse');
+            });
+            arrows.forEach(arrow => arrow.classList.remove('active'));
+            
+            flowDemo = setInterval(() => {
+                if (stepIndex < steps.length) {
+                    // Activate step
+                    steps[stepIndex].classList.add('active');
+                    
+                    // Activate arrow (if not last step)
+                    if (stepIndex > 0 && arrows[stepIndex - 1]) {
+                        arrows[stepIndex - 1].classList.add('active');
+                    }
+                    
+                    // Add processing animation
+                    setTimeout(() => {
+                        steps[stepIndex].classList.add('processing', 'pulse');
+                        
+                        setTimeout(() => {
+                            steps[stepIndex].classList.remove('processing', 'pulse');
+                        }, 1000);
+                    }, 400);
+                    
+                    stepIndex++;
+                } else {
+                    clearInterval(flowDemo);
+                }
+            }, 1500);
+        }
+        
+        function animateMetrics() {
+            const cards = document.querySelectorAll('.metrics-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('active');
+                }, index * 300);
+            });
+        }
+        
+        function startAutoDemo() {
+            let section = 1;
+            showSection(section);
+            
+            autoDemo = setInterval(() => {
+                section++;
+                if (section > 5) section = 1;
+                showSection(section);
+            }, 8000); // 8 seconds per section
+            
+            // Update button
+            const autoBtn = document.querySelectorAll('.nav-btn')[5];
+            autoBtn.textContent = '⏸️ Stop';
+            autoBtn.onclick = stopAutoDemo;
+        }
+        
+        function stopAutoDemo() {
+            clearInterval(autoDemo);
+            const autoBtn = document.querySelectorAll('.nav-btn')[5];
+            autoBtn.textContent = '🎬 Auto';
+            autoBtn.onclick = startAutoDemo;
+        }
+        
+        function toggleFullscreen() {
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else {
+                document.documentElement.requestFullscreen();
+            }
+        }
+        
+        // Keyboard controls
+        document.addEventListener('keydown', (e) => {
+            switch(e.key) {
+                case 'ArrowLeft':
+                    if (currentSection > 1) showSection(currentSection - 1);
+                    break;
+                case 'ArrowRight':
+                    if (currentSection < 5) showSection(currentSection + 1);
+                    break;
+                case ' ':
+                    e.preventDefault();
+                    startAutoDemo();
+                    break;
+                case 'Escape':
+                    if (document.fullscreenElement) document.exitFullscreen();
+                    stopAutoDemo();
+                    break;
+                case 'f':
+                case 'F':
+                    toggleFullscreen();
+                    break;
+            }
+        });
+        
+        // Auto-start flow animation on load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                startFlowAnimation();
+            }, 1000);
+        });
+        
+        // Animate metric values occasionally
+        setInterval(() => {
+            if (currentSection === 5) {
+                const values = document.querySelectorAll('.metric-value');
+                values.forEach(value => {
+                    if (Math.random() > 0.7) { // 30% chance
+                        value.style.transform = 'scale(1.1)';
+                        value.style.color = '#FF8C42';
+                        setTimeout(() => {
+                            value.style.transform = 'scale(1)';
+                            value.style.color = '#F5A623';
+                        }, 200);
+                    }
+                });
+            }
+        }, 3000);
+        
+        // Console tips
+        console.log(`
+🚀 RecruitOps360 Extended Demo Controls:
+        
+KEYBOARD:
+← → Arrow keys: Navigate sections
+Space: Start/stop auto demo  
+F: Toggle fullscreen
+Esc: Exit fullscreen + stop demo
+
+NAVIGATION:
+1. Flow - Automation overview
+2. Figma - Live design editing
+3. Canva - Live ad creation  
+4. Assessment - Working Typeform
+5. Metrics - Performance dashboard
+
+FEATURES:
+✅ Live Figma iframe embedding
+✅ Live Canva editor access
+✅ Working Typeform assessment
+✅ Interactive metrics dashboard
+✅ Full automation flow demo
+
+Ready for professional presentations! 🎯
+        `);
+    </script>
+</body>
+</html>

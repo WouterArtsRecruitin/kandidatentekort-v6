@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>KandidatenTekort Meta Ads - Ready to Export</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; }
+.container { display: flex; flex-direction: column; gap: 40px; padding: 40px; background: #f5f5f5; }
+.ad { width: 1200px; height: 628px; position: relative; overflow: hidden; margin: 0 auto; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+.ad-title { text-align: center; font-size: 24px; font-weight: 700; color: #333; margin-bottom: 20px; }
+.export-btn { background: #FF9800; color: white; border: none; padding: 15px 40px; font-size: 18px; font-weight: 700; cursor: pointer; border-radius: 8px; margin: 10px auto; display: block; }
+.export-btn:hover { background: #F57C00; }
+
+/* AD 1 - Split Screen Navy/White */
+.split-screen { background: linear-gradient(90deg, #1a2332 0%, #1a2332 50%, #ffffff 50%, #ffffff 100%); display: flex; }
+.split-left { width: 50%; padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; color: white; }
+.split-right { width: 50%; padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; color: #1a2332; }
+.split-left .emoji { font-size: 100px; margin-bottom: 30px; }
+.split-left h1 { font-size: 58px; font-weight: 900; line-height: 1.1; margin: 0; }
+.split-right h2 { font-size: 56px; font-weight: 900; color: #FF9800; margin: 0 0 25px 0; line-height: 1; }
+.split-right p { font-size: 26px; line-height: 1.5; font-weight: 500; }
+.split-right .highlight { font-weight: 700; color: #1a2332; }
+
+/* AD 2 - Social Proof Navy */
+.social-proof { background: #1a2332; padding: 70px 80px; color: white; display: flex; flex-direction: column; justify-content: center; }
+.social-proof h2 { font-size: 48px; font-weight: 700; margin: 0 0 30px 0; }
+.social-proof .stats { font-size: 96px; font-weight: 900; color: #FF9800; margin: 25px 0; line-height: 1; }
+.social-proof .detail { font-size: 30px; line-height: 1.6; margin: 25px 0; }
+.social-proof .detail strong { font-weight: 700; color: #FF9800; }
+.social-proof .checkmarks { font-size: 28px; line-height: 1.8; margin: 30px 0; }
+.social-proof .cta { background: #FF9800; color: #1a2332; padding: 20px 45px; font-size: 26px; font-weight: 700; display: inline-block; margin-top: 35px; border-radius: 8px; text-decoration: none; }
+
+/* AD 3 - ROI Calculator Gradient */
+.roi-calc { background: linear-gradient(135deg, #1a2332 0%, #2d3f5c 50%, #1a2332 100%); padding: 70px 80px; color: white; display: flex; flex-direction: column; justify-content: center; }
+.roi-calc h2 { font-size: 52px; font-weight: 900; margin: 0 0 25px 0; }
+.roi-calc .price { font-size: 120px; font-weight: 900; color: #FF9800; margin: 30px 0; line-height: 1; }
+.roi-calc .calculation { font-size: 32px; line-height: 1.7; margin: 35px 0; }
+.roi-calc .highlight { color: #FF9800; font-weight: 700; }
+.roi-calc .cta { background: #FF9800; color: #1a2332; padding: 22px 50px; font-size: 30px; font-weight: 700; display: inline-block; margin-top: 40px; border-radius: 8px; text-decoration: none; }
+
+.logo { position: absolute; bottom: 25px; right: 35px; font-weight: 900; color: #FF9800; font-size: 28px; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  
+  <div>
+    <h3 class="ad-title">AD 1: Split Screen Pain Point</h3>
+    <div id="ad1" class="ad split-screen">
+      <div class="split-left">
+        <div class="emoji">😰</div>
+        <h1>0 REACTIES<br/>OP JE<br/>VACATURE?</h1>
+      </div>
+      <div class="split-right">
+        <h2>GRATIS<br/>ANALYSE</h2>
+        <p><span class="highlight">Ontdek binnen 24 uur</span><br/>waarom 73% van technische<br/>vacatures 60+ dagen<br/>open blijft</p>
+      </div>
+      <div class="logo">RECRUITIN</div>
+    </div>
+    <button class="export-btn" onclick="exportAd('ad1', 'meta_ad_1_split_screen.png')">📥 Download Ad 1</button>
+  </div>
+
+  <div>
+    <h3 class="ad-title">AD 2: Social Proof Case Study</h3>
+    <div id="ad2" class="ad social-proof">
+      <h2>📈 Van 3 naar 47 Reacties</h2>
+      <div class="stats">+1.467%</div>
+      <div class="detail">Een productiebedrijf in <strong>Gelderland</strong><br/>verhoogde hun kandidaatrespons in 2 weken</div>
+      <div class="checkmarks">✓ Bewezen methode<br/>✓ €15.000+ bespaard<br/>✓ Dezelfde strategie voor jouw vacatures</div>
+      <a href="#" class="cta">GRATIS ANALYSE →</a>
+      <div class="logo">RECRUITIN</div>
+    </div>
+    <button class="export-btn" onclick="exportAd('ad2', 'meta_ad_2_social_proof.png')">📥 Download Ad 2</button>
+  </div>
+
+  <div>
+    <h3 class="ad-title">AD 3: ROI Calculator Urgency</h3>
+    <div id="ad3" class="ad roi-calc">
+      <h2>💸 Stop Het Bloeden</h2>
+      <div class="price">€500+</div>
+      <div class="calculation"><strong>Elke dag</strong> zonder de juiste medewerker:<br/>• Gemiddeld <span class="highlight">€500 verlies/dag</span><br/>• 60 dagen open = <span class="highlight">€30.000 verlies</span><br/>• Gratis kosten-analyse beschikbaar</div>
+      <a href="#" class="cta">DIRECT INZICHT →</a>
+      <div class="logo">RECRUITIN</div>
+    </div>
+    <button class="export-btn" onclick="exportAd('ad3', 'meta_ad_3_roi_calculator.png')">📥 Download Ad 3</button>
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+function exportAd(adId, filename) {
+  const ad = document.getElementById(adId);
+  html2canvas(ad, { 
+    width: 1200, 
+    height: 628, 
+    scale: 2,
+    backgroundColor: null
+  }).then(canvas => {
+    const link = document.createElement('a');
+    link.download = filename;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  });
+}
+</script>
+
+</body>
+</html>

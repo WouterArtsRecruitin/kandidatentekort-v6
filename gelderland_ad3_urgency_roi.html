@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200, height=628">
+    <title>Kandidatentekort - Gelderland AD 3</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            width: 1200px;
+            height: 628px;
+            background: #E5D5C5;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px;
+        }
+        
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .headline {
+            color: #404042;
+            font-size: 68px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 40px;
+        }
+        
+        .subhead {
+            color: #404042;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        
+        .bullet-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        
+        .bullet-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .bullet-dot {
+            width: 12px;
+            height: 12px;
+            background: #404042;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        
+        .bullet-text {
+            color: #404042;
+            font-size: 26px;
+            font-weight: 400;
+        }
+        
+        .highlight-box {
+            background: rgba(244, 151, 22, 0.15);
+            border-left: 6px solid #F49716;
+            padding: 24px 32px;
+            margin: 30px 0;
+        }
+        
+        .highlight-text {
+            color: #404042;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        
+        .highlight-number {
+            color: #F49716;
+            font-size: 48px;
+            font-weight: 900;
+        }
+        
+        .body-text {
+            color: #404042;
+            font-size: 26px;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #F49716 0%, #FF8C42 100%);
+            color: white;
+            font-size: 32px;
+            font-weight: 700;
+            padding: 20px 60px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(244, 151, 22, 0.3);
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            align-self: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <div class="headline">Elke dag kost je €500+</div>
+            <div class="subhead">Een openstaande technische vacature kost je:</div>
+            
+            <div class="bullet-list">
+                <div class="bullet-item">
+                    <div class="bullet-dot"></div>
+                    <div class="bullet-text">Productieverlies</div>
+                </div>
+                <div class="bullet-item">
+                    <div class="bullet-dot"></div>
+                    <div class="bullet-text">Overwerk teamleden</div>
+                </div>
+                <div class="bullet-item">
+                    <div class="bullet-dot"></div>
+                    <div class="bullet-text">Gemiste deadlines</div>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <div class="highlight-text">
+                    60 dagen = <span class="highlight-number">€30.000</span> verlies
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <div class="body-text">
+                In 24 uur weet je wat je vacature mist.<br>
+                <strong>Gratis. Geen verplichtingen.</strong>
+            </div>
+            <a href="#" class="cta-button">WACHT NIET. CHECK NU →</a>
+        </div>
+    </div>
+</body>
+</html>
