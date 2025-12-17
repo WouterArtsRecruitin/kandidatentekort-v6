@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gratis Vacature Analyse - Direct Resultaat</title>
+    
+    <!-- Facebook Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.com/en_US/fbevents.js');
+      fbq('init', '238226887541404');
+      fbq('track', 'PageView');
+      
+      // Track instant form view
+      fbq('track', 'ViewContent', {
+        content_name: 'Typeform Direct',
+        content_category: 'Lead Form'
+      });
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f172a;
+            color: white;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .instant-header {
+            background: linear-gradient(135deg, #ea580c, #f97316);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .instant-header h1 {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .instant-header p {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+        
+        .typeform-wrapper {
+            height: calc(100vh - 80px);
+            position: relative;
+        }
+        
+        /* Mobile optimized */
+        @media (max-width: 768px) {
+            .instant-header {
+                padding: 15px;
+            }
+            
+            .instant-header h1 {
+                font-size: 18px;
+            }
+            
+            .instant-header p {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="instant-header">
+        <h1>30+ dagen online? Stop het wachten!</h1>
+        <p>Gratis analyse • 48% meer reacties • Start nu ↓</p>
+    </div>
+    
+    <div class="typeform-wrapper">
+        <div data-tf-widget="kalFRTCA" 
+             data-tf-hide-headers="true"
+             data-tf-iframe-props="title=Vacature Analyse"
+             data-tf-medium="snippet" 
+             style="width:100%;height:100%;">
+        </div>
+        <script src="https://embed.typeform.com/next/embed.js"></script>
+    </div>
+    
+    <script>
+    // Parse Facebook click ID and UTM parameters
+    (function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const fbclid = urlParams.get('fbclid') || '';
+        const utmSource = urlParams.get('utm_source') || 'facebook';
+        const utmMedium = urlParams.get('utm_medium') || 'cpc';
+        const utmCampaign = urlParams.get('utm_campaign') || '';
+        const utmContent = urlParams.get('utm_content') || '';
+        const adId = urlParams.get('ad_id') || '';
+        
+        // Track form start
+        window.addEventListener('message', function(event) {
+            if (event.data && event.data.type === 'form-screen-changed') {
+                fbq('track', 'InitiateCheckout', {
+                    content_name: 'Typeform Start',
+                    content_ids: [adId],
+                });
+            }
+            
+            if (event.data && event.data.type === 'form-submit') {
+                // Track with all Meta parameters
+                fbq('track', 'Lead', {
+                    content_name: 'Vacature Analyse',
+                    value: 249.00,
+                    currency: 'EUR',
+                    content_ids: [adId],
+                });
+                
+                // Optional: Close or redirect
+                setTimeout(() => {
+                    window.location.href = 'https://kandidatentekort.nl/bedankt';
+                }, 2000);
+            }
+        });
+        
+        // Pass parameters to Typeform
+        window.addEventListener('load', function() {
+            const widget = document.querySelector('[data-tf-widget]');
+            if (widget) {
+                widget.setAttribute('data-tf-hidden', 
+                    `utm_source=${utmSource},utm_medium=${utmMedium},utm_campaign=${utmCampaign},utm_content=${utmContent},fbclid=${fbclid},ad_id=${adId}`
+                );
+            }
+        });
+    })();
+    </script>
+</body>
+</html>
