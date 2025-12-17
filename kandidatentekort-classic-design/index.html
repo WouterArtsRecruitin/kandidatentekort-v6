@@ -477,7 +477,12 @@
                 </p>
                 
                 <!-- Typeform embed -->
-                <div id="typeform-container"></div>
+                <div data-tf-widget="kalFRTCA" 
+                     data-tf-iframe-props="title=Gratis Vacature Analyse" 
+                     data-tf-medium="snippet" 
+                     style="width:100%;height:600px;">
+                </div>
+                <script src="//embed.typeform.com/next/embed.js"></script>
             </div>
         </div>
     </section>
@@ -496,11 +501,8 @@
         </div>
     </footer>
 
-    <!-- Typeform Script -->
-    <script src="//embed.typeform.com/next/embed.js"></script>
-    
     <script>
-    // Parse UTM parameters and embed Typeform
+    // Parse UTM parameters for Typeform
     (function() {
         const urlParams = new URLSearchParams(window.location.search);
         const utmSource = urlParams.get('utm_source') || '';
@@ -509,20 +511,26 @@
         const utmContent = urlParams.get('utm_content') || '';
         const stad = utmContent; // City is in utm_content
         
-        // Embed Typeform with UTM parameters
+        // Update Typeform with hidden fields
         window.addEventListener('load', function() {
-            const { createWidget } = window.tf;
-            createWidget('https://form.typeform.com/to/kalFRTCA', {
-                container: document.getElementById('typeform-container'),
-                hidden: {
-                    utm_source: utmSource,
-                    utm_medium: utmMedium,
-                    utm_campaign: utmCampaign,
-                    utm_content: utmContent,
-                    stad: stad
-                },
-                onSubmit: function() {
-                    // Track Lead event when form is submitted
+            // Get the typeform widget
+            const tfWidget = document.querySelector('[data-tf-widget]');
+            if (tfWidget) {
+                // Add hidden fields as data attributes
+                tfWidget.setAttribute('data-tf-hidden', `utm_source=${utmSource},utm_medium=${utmMedium},utm_campaign=${utmCampaign},utm_content=${utmContent},stad=${stad}`);
+                
+                // Reinitialize if tf is available
+                if (window.tf && window.tf.load) {
+                    window.tf.load();
+                }
+            }
+        });
+        
+        // Track form events
+        window.addEventListener('message', function(event) {
+            if (event.data && event.data.type) {
+                if (event.data.type === 'form-submit') {
+                    // Track Lead event
                     fbq('track', 'Lead', {
                         content_name: 'Gratis Vacature Check',
                         content_category: 'Lead Generation',
@@ -530,19 +538,23 @@
                         currency: 'EUR'
                     });
                     
-                    // Also track with Google Analytics
+                    // Google Analytics
                     if (typeof gtag !== 'undefined') {
                         gtag('event', 'form_submit', {
                             event_category: 'engagement',
                             event_label: 'typeform_lead'
                         });
                     }
-                },
-                onStarted: function() {
-                    // Track InitiateCheckout when form is started
-                    fbq('track', 'InitiateCheckout');
                 }
-            });
+                
+                if (event.data.type === 'form-ready' || event.data.type === 'form-screen-changed') {
+                    // Track InitiateCheckout only once
+                    if (!window.formStarted) {
+                        window.formStarted = true;
+                        fbq('track', 'InitiateCheckout');
+                    }
+                }
+            }
         });
         
         // Track ViewContent when user scrolls 50%
