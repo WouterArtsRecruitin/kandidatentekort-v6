@@ -1,0 +1,3 @@
+# Netlify redirects
+/admin    https://app.netlify.com/sites/kandidatentekortv2    302
+/zapier   https://zapier.com/app/editor    302
