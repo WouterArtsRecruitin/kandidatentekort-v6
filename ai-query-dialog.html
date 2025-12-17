@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #FF6B35;
+      margin-top: 0;
+    }
+    .query-box {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+      margin: 10px 0;
+    }
+    .query-box:focus {
+      outline: none;
+      border-color: #FF6B35;
+    }
+    .suggestions {
+      margin: 20px 0;
+    }
+    .suggestion {
+      background: #f0f0f0;
+      padding: 8px 12px;
+      margin: 5px 0;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .suggestion:hover {
+      background: #FF6B35;
+      color: white;
+    }
+    .submit-btn {
+      background: #FF6B35;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.2s;
+    }
+    .submit-btn:hover {
+      background: #e55a2b;
+    }
+    .submit-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f9f9f9;
+      border-radius: 4px;
+      white-space: pre-wrap;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    .loading {
+      text-align: center;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🤖 Ask Kandidatentekort AI</h2>
+    <p>Type your question or click a suggestion below:</p>
+    
+    <input type="text" 
+           id="queryInput" 
+           class="query-box" 
+           placeholder="e.g., Show me today's performance"
+           onkeypress="handleKeyPress(event)">
+    
+    <div class="suggestions">
+      <h4>Quick Questions:</h4>
+      <div class="suggestion" onclick="askQuestion('Show me cost per application by campaign')">
+        💰 Cost per application by campaign
+      </div>
+      <div class="suggestion" onclick="askQuestion('Am I on track for 40% improvement?')">
+        📈 Progress toward 40% improvement goal
+      </div>
+      <div class="suggestion" onclick="askQuestion('Which campaigns exceed €15 CPA?')">
+        🚨 Campaigns exceeding target CPA
+      </div>
+      <div class="suggestion" onclick="askQuestion('What is my daily budget utilization?')">
+        📊 Daily budget utilization (€240 target)
+      </div>
+      <div class="suggestion" onclick="askQuestion('Which age groups convert best?')">
+        👥 Best performing age groups (25-55)
+      </div>
+      <div class="suggestion" onclick="askQuestion('Show me regional performance in Netherlands')">
+        🗺️ Performance by Dutch regions
+      </div>
+    </div>
+    
+    <button id="submitBtn" class="submit-btn" onclick="submitQuery()">
+      Ask AI
+    </button>
+    
+    <div id="result" class="result" style="display: none;"></div>
+  </div>
+  
+  <script>
+    function askQuestion(question) {
+      document.getElementById('queryInput').value = question;
+      submitQuery();
+    }
+    
+    function handleKeyPress(event) {
+      if (event.keyCode === 13) {
+        submitQuery();
+      }
+    }
+    
+    function submitQuery() {
+      const query = document.getElementById('queryInput').value;
+      if (!query.trim()) {
+        alert('Please enter a question');
+        return;
+      }
+      
+      // Disable button and show loading
+      const btn = document.getElementById('submitBtn');
+      const resultDiv = document.getElementById('result');
+      
+      btn.disabled = true;
+      btn.textContent = 'Thinking...';
+      resultDiv.style.display = 'block';
+      resultDiv.innerHTML = '<div class="loading">🤖 AI is analyzing your data...</div>';
+      
+      // Call server function
+      google.script.run
+        .withSuccessHandler(showResult)
+        .withFailureHandler(showError)
+        .processAIQuery(query);
+    }
+    
+    function showResult(result) {
+      const btn = document.getElementById('submitBtn');
+      const resultDiv = document.getElementById('result');
+      
+      btn.disabled = false;
+      btn.textContent = 'Ask AI';
+      
+      // Display result
+      resultDiv.innerHTML = `
+        <strong>AI Response:</strong><br><br>
+        ${formatResult(result)}
+      `;
+    }
+    
+    function showError(error) {
+      const btn = document.getElementById('submitBtn');
+      const resultDiv = document.getElementById('result');
+      
+      btn.disabled = false;
+      btn.textContent = 'Ask AI';
+      
+      resultDiv.innerHTML = `
+        <strong style="color: red;">Error:</strong><br>
+        ${error.message || 'Something went wrong. Please try again.'}
+      `;
+    }
+    
+    function formatResult(result) {
+      // Format the AI response nicely
+      if (typeof result === 'object') {
+        return JSON.stringify(result, null, 2)
+          .replace(/\n/g, '<br>')
+          .replace(/  /g, '&nbsp;&nbsp;');
+      }
+      return result.replace(/\n/g, '<br>');
+    }
+  </script>
+</body>
+</html>

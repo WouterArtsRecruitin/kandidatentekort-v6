@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOMO Templates Preview - Kandidatentekort Campaign</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #FF6B35;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .template-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .template-preview {
+            width: 100%;
+            height: 314px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* COLD Template */
+        .cold-template {
+            background: #000000;
+            color: white;
+        }
+        .cold-main {
+            font-size: 72px;
+            font-weight: 900;
+            color: #FF0000;
+            margin: 0;
+            text-shadow: 0 4px 8px rgba(255,0,0,0.3);
+            letter-spacing: -2px;
+        }
+        .cold-secondary {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            margin-top: 20px;
+        }
+        
+        /* WARM Template */
+        .warm-template {
+            background: linear-gradient(135deg, #1A0000 0%, #331100 100%);
+            color: white;
+        }
+        .warm-main {
+            font-size: 48px;
+            font-weight: 900;
+            color: #FF6B35;
+            margin: 0;
+            text-shadow: 0 0 20px rgba(255,107,53,0.5);
+        }
+        .warm-secondary {
+            font-size: 40px;
+            font-weight: 900;
+            color: white;
+            margin: 5px 0;
+        }
+        .checkmarks {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .checkmark {
+            position: absolute;
+            color: #10B981;
+            font-size: 24px;
+            opacity: 0.8;
+        }
+        .checkmark:nth-child(1) { top: 20px; left: 40px; }
+        .checkmark:nth-child(2) { top: 40px; right: 60px; }
+        .checkmark:nth-child(3) { bottom: 40px; left: 80px; }
+        .checkmark:nth-child(4) { bottom: 20px; right: 40px; }
+        
+        /* HOT Template */
+        .hot-template {
+            background: #000000;
+            border: 5px solid #FF0000;
+            color: white;
+        }
+        .countdown {
+            font-size: 56px;
+            font-weight: 900;
+            color: #FF0000;
+            margin: 0;
+            text-shadow: 0 0 30px rgba(255,0,0,0.8);
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .price-section {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .old-price {
+            font-size: 32px;
+            color: #666666;
+            text-decoration: line-through;
+        }
+        .new-price {
+            font-size: 48px;
+            font-weight: 900;
+            color: #00FF00;
+            text-shadow: 0 0 20px rgba(0,255,0,0.5);
+        }
+        .cta-button {
+            background: #FF0000;
+            color: white;
+            padding: 10px 30px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-transform: uppercase;
+        }
+        
+        .specs {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        .spec-label {
+            color: #666;
+        }
+        .spec-value {
+            font-weight: bold;
+            color: #333;
+        }
+        .color-chip {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+            vertical-align: middle;
+            margin-left: 5px;
+            border: 1px solid #ddd;
+        }
+        h2 {
+            color: #333;
+            margin-top: 0;
+        }
+        .copy-text {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔥 FOMO Campaign Templates - Kandidatentekort</h1>
+        
+        <div class="template-grid">
+            <!-- COLD Template -->
+            <div class="template-card">
+                <h2>COLD - Het Geld Dat Je Laat Liggen</h2>
+                <div class="template-preview cold-template">
+                    <h3 class="cold-main">€500 PER DAG</h3>
+                    <p class="cold-secondary">47 DAGEN = €23.500 WEG</p>
+                </div>
+                <div class="specs">
+                    <div class="spec-item">
+                        <span class="spec-label">Hoofdtekst:</span>
+                        <span class="spec-value">€500 PER DAG</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Subtekst:</span>
+                        <span class="spec-value">47 DAGEN = €23.500 WEG</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Achtergrond:</span>
+                        <span class="spec-value">#000000 <span class="color-chip" style="background: #000000;"></span></span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Hoofdkleur:</span>
+                        <span class="spec-value">#FF0000 <span class="color-chip" style="background: #FF0000;"></span></span>
+                    </div>
+                </div>
+                <div class="copy-text">
+                    Kopieer voor Canva: "€500 PER DAG" | "47 DAGEN = €23.500 WEG"
+                </div>
+            </div>
+            
+            <!-- WARM Template -->
+            <div class="template-card">
+                <h2>WARM - De Recruitment Revolutie</h2>
+                <div class="template-preview warm-template">
+                    <div class="checkmarks">
+                        <span class="checkmark">✓</span>
+                        <span class="checkmark">✓</span>
+                        <span class="checkmark">✓</span>
+                        <span class="checkmark">✓</span>
+                    </div>
+                    <h3 class="warm-main">127 BEDRIJVEN</h3>
+                    <p class="warm-secondary">DEZE WEEK</p>
+                </div>
+                <div class="specs">
+                    <div class="spec-item">
+                        <span class="spec-label">Hoofdtekst:</span>
+                        <span class="spec-value">127 BEDRIJVEN</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Subtekst:</span>
+                        <span class="spec-value">DEZE WEEK</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Achtergrond:</span>
+                        <span class="spec-value">Gradient #1A0000 → #331100</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Hoofdkleur:</span>
+                        <span class="spec-value">#FF6B35 <span class="color-chip" style="background: #FF6B35;"></span></span>
+                    </div>
+                </div>
+                <div class="copy-text">
+                    Kopieer voor Canva: "127 BEDRIJVEN" | "DEZE WEEK" | ✓ symbolen
+                </div>
+            </div>
+            
+            <!-- HOT Template -->
+            <div class="template-card">
+                <h2>HOT - Laatste Kans</h2>
+                <div class="template-preview hot-template">
+                    <h3 class="countdown">NOG 24 UUR</h3>
+                    <div class="price-section">
+                        <span class="old-price">€297</span>
+                        <span class="new-price">€0</span>
+                    </div>
+                    <div class="cta-button">GRATIS TOEGANG</div>
+                </div>
+                <div class="specs">
+                    <div class="spec-item">
+                        <span class="spec-label">Countdown:</span>
+                        <span class="spec-value">NOG 24 UUR</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Prijzen:</span>
+                        <span class="spec-value">€297 → €0</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">CTA:</span>
+                        <span class="spec-value">GRATIS TOEGANG</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Rand:</span>
+                        <span class="spec-value">#FF0000 (5px) <span class="color-chip" style="background: #FF0000;"></span></span>
+                    </div>
+                </div>
+                <div class="copy-text">
+                    Kopieer voor Canva: "NOG 24 UUR" | "€297" | "€0" | "GRATIS TOEGANG"
+                </div>
+            </div>
+        </div>
+        
+        <div style="background: white; padding: 30px; border-radius: 10px; margin-top: 40px;">
+            <h2 style="color: #FF6B35;">📋 Quick Setup Instructions for Canva</h2>
+            <ol>
+                <li><strong>Open Canva</strong> → Create Design → Facebook Ad (1200x628px)</li>
+                <li><strong>Copy the text</strong> from the templates above</li>
+                <li><strong>Set backgrounds</strong> according to the color codes provided</li>
+                <li><strong>Use these fonts:</strong>
+                    <ul>
+                        <li>Headlines: Bebas Neue, Anton, or Impact</li>
+                        <li>Body text: Montserrat Bold or Arial Black</li>
+                    </ul>
+                </li>
+                <li><strong>Apply effects:</strong>
+                    <ul>
+                        <li>Drop shadows on all text</li>
+                        <li>Glow effects on urgent elements (red/green text)</li>
+                        <li>Keep backgrounds dark for contrast</li>
+                    </ul>
+                </li>
+                <li><strong>Export settings:</strong> PNG format, highest quality</li>
+            </ol>
+            
+            <h3 style="color: #333; margin-top: 30px;">🎯 Facebook Ads Best Practices:</h3>
+            <ul>
+                <li>Keep text under 20% of image area</li>
+                <li>Test on mobile preview (most traffic is mobile)</li>
+                <li>Use A/B testing with different variations</li>
+                <li>Track CTR and conversion rates for each image</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

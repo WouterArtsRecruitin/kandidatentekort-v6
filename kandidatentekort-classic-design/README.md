@@ -1,10 +1,11 @@
-# Kandidatentekort.nl - Classic Design
+# Kandidatentekort.nl - Meta Ads Landing Page
 
-Clean implementation van kandidatentekort.nl met:
-- ✅ Klassiek assessment form design (geen gradient)
+Dark gradient landing page voor Meta Ads campagnes met:
+- ✅ Dark gradient design (#0f172a to #1e293b)
 - ✅ Correct Facebook Pixel ID: 238226887541404
-- ✅ Beige kleuren schema (#f5e6d3)
 - ✅ Typeform integratie (kalFRTCA)
+- ✅ UTM parameter tracking
+- ✅ Mobile responsive design
 
 ## Deploy instructies
 
