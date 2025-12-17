@@ -3,18 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Gratis Vacature Analyse - 40-60% Meer Sollicitaties | KandidatenTekort.nl</title>
-    <meta name="description" content="Ontdek waarom je geen kandidaten krijgt. AI-powered analyse geeft je binnen 15 minuten concrete verbeterpunten.">
-    
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W6G1NY28BD"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-W6G1NY28BD');
-    </script>
+    <title>Gratis Vacature Analyse - KandidatenTekort.nl</title>
     
     <!-- Facebook Pixel Code -->
     <script>
@@ -32,537 +21,72 @@
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=238226887541404&ev=PageView&noscript=1"
     /></noscript>
-    <!-- End Meta Pixel Code -->
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        :root {
-            /* Authority Colors - Premium Navy */
-            --navy-900: #0a1628;
-            --navy-800: #0f172a;
-            --navy-700: #1e293b;
-            --navy-600: #334155;
-            
-            /* Trust Blue - Professional */
-            --blue-600: #2563eb;
-            --blue-500: #3b82f6;
-            
-            /* Energy Orange - Inviting */
-            --orange-600: #ea580c;
-            --orange-500: #f97316;
-            --orange-400: #fb923c;
-            
-            /* Success Green - Credibility */
-            --green-600: #059669;
-            --green-500: #10b981;
-            
-            /* Premium Grays */
-            --gray-50: #f8fafc;
-            --gray-100: #f1f5f9;
-            --gray-200: #e2e8f0;
-            --gray-300: #cbd5e1;
-            --gray-400: #94a3b8;
-            --gray-500: #64748b;
-            --gray-600: #475569;
-            
-            /* Shadows - Depth */
-            --shadow-sm: 0 1px 3px rgba(10, 22, 40, 0.08);
-            --shadow-md: 0 4px 12px rgba(10, 22, 40, 0.12);
-            --shadow-lg: 0 12px 32px rgba(10, 22, 40, 0.16);
-            --shadow-xl: 0 20px 60px rgba(10, 22, 40, 0.20);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: var(--navy-800);
-            background: var(--gray-50);
-            -webkit-font-smoothing: antialiased;
-            font-feature-settings: 'cv11' 1;
+            color: #333;
         }
         
-        /* ========== HEADER - PROFESSIONAL AUTHORITY ========== */
-        header {
-            background: rgba(255, 255, 255, 0.98);
-            border-bottom: 1px solid var(--gray-200);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(12px);
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .header-content {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 18px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        .logo {
-            font-size: 1.6rem;
-            font-weight: 900;
-            color: var(--navy-900);
-            letter-spacing: -0.04em;
-        }
-        
-        .logo-accent {
-            background: linear-gradient(135deg, var(--orange-600), var(--orange-400));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .trust-badge {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: linear-gradient(135deg, rgba(5, 150, 105, 0.08), rgba(16, 185, 129, 0.08));
-            border-radius: 24px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--green-600);
-            border: 1.5px solid var(--green-500);
-        }
-        
-        .trust-icon {
-            width: 16px;
-            height: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .header-cta {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-        
-        .header-label {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--gray-500);
-            margin-bottom: 4px;
-        }
-        
-        .header-value {
-            font-size: 2rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--orange-600), var(--orange-400));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -0.03em;
-            line-height: 1;
-        }
-        
-        /* ========== HERO - CURIOSITY + AUTHORITY ========== */
-        .hero {
-            background: linear-gradient(160deg, var(--navy-900) 0%, var(--navy-700) 100%);
-            color: white;
-            padding: 100px 40px 80px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        /* Tech Grid Pattern */
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: 
-                repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, transparent 1px, transparent 40px),
-                repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, transparent 1px, transparent 40px);
-            opacity: 0.5;
-        }
-        
-        /* Glow Orb */
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            right: -10%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(234, 88, 12, 0.15) 0%, transparent 60%);
-            pointer-events: none;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 24px;
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(12px);
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 32px;
-            border: 1.5px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-        }
-        
-        .badge-icon {
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(135deg, var(--orange-500), var(--orange-400));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-        }
-        
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            margin-bottom: 32px;
-            line-height: 1.05;
-            letter-spacing: -0.04em;
-        }
-        
-        .hero h1 .curiosity-hook {
-            background: linear-gradient(135deg, var(--orange-500), var(--orange-400));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: block;
-            margin-top: 8px;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.5rem;
-            line-height: 1.6;
-            opacity: 0.92;
-            font-weight: 500;
-            max-width: 780px;
-            margin: 0 auto 48px;
-            color: rgba(255, 255, 255, 0.95);
-        }
-        
-        .hero-proof {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 48px;
-            flex-wrap: wrap;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.12);
-        }
-        
-        .proof-stat {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .proof-number {
-            font-size: 2.5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--orange-400), #fbbf24);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -0.03em;
-        }
-        
-        .proof-label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            opacity: 0.85;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        
-        /* ========== FORM SECTION - MAIN CTA ========== */
-        .form-section {
-            padding: 80px 40px;
-        }
-        
-        .form-container {
+        .container {
             max-width: 900px;
             margin: 0 auto;
-        }
-        
-        .form-card {
-            background: white;
-            border-radius: 28px;
-            box-shadow: var(--shadow-xl);
-            padding: 64px;
-            position: relative;
-            border: 1px solid var(--gray-200);
-        }
-        
-        .form-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 6px;
-            background: linear-gradient(90deg, var(--orange-600), var(--blue-600));
-            border-radius: 28px 28px 0 0;
-        }
-        
-        .form-title {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--navy-900);
-            margin-bottom: 12px;
-            letter-spacing: -0.02em;
+            padding: 40px 20px;
             text-align: center;
         }
         
-        .form-subtitle {
-            font-size: 1.05rem;
-            color: var(--gray-600);
-            margin-bottom: 40px;
-            line-height: 1.6;
-            text-align: center;
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #0f172a;
         }
         
-        /* Typeform Container */
-        #typeform-container {
-            width: 100%;
-            height: 600px;
-            border-radius: 16px;
-            overflow: hidden;
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #64748b;
         }
         
-        /* ========== FOOTER ========== */
-        footer {
-            background: var(--navy-900);
-            color: white;
-            padding: 56px 40px;
-            text-align: center;
-        }
-        
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .footer-brand {
-            font-size: 1.3rem;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-        
-        .footer-brand-accent {
-            color: var(--orange-400);
-        }
-        
-        .footer-tagline {
-            font-size: 0.95rem;
-            opacity: 0.75;
-            margin-bottom: 24px;
-        }
-        
-        .footer-copyright {
-            font-size: 0.85rem;
-            opacity: 0.6;
-            padding-top: 24px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        /* ========== RESPONSIVE ========== */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero-subtitle { font-size: 1.15rem; }
-            .form-card { padding: 36px 28px; }
-            .section-title { font-size: 2rem; }
-            .header-content { 
-                flex-direction: column; 
-                gap: 20px;
-                padding: 18px 20px;
-            }
-            .header-cta { align-items: center; }
-            .hero { padding: 60px 20px 40px; }
-            .hero-proof { gap: 24px; }
-            #typeform-container { height: 500px; }
+        .typeform-container {
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Gratis Vacature Analyse</h1>
+        <p>Vul het formulier in voor uw gratis vacature analyse</p>
+        
+        <div class="typeform-container">
+            <div data-tf-widget="kalFRTCA" 
+                 data-tf-iframe-props="title=Gratis Vacature Analyse" 
+                 style="width:100%;height:600px;">
+            </div>
+            <script src="https://embed.typeform.com/next/embed.js"></script>
+        </div>
+    </div>
     
-    <header>
-        <div class="header-content">
-            <div class="logo-section">
-                <div class="logo">
-                    Kandidaten<span class="logo-accent">Tekort</span>.nl
-                </div>
-                <div class="trust-badge">
-                    <span class="trust-icon">✓</span>
-                    10+ Jaar Ervaring
-                </div>
-            </div>
-            <div class="header-cta">
-                <div class="header-label">Meer Kandidaten</div>
-                <div class="header-value">+48%</div>
-            </div>
-        </div>
-    </header>
-
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-badge">
-                <span class="badge-icon">⚡</span>
-                Gratis Vacature Analyse
-            </div>
-            <h1>
-                Vacature moeilijk invullen?
-                <span class="curiosity-hook">Wij helpen je gratis</span>
-            </h1>
-            <p class="hero-subtitle">
-                Ontvang binnen 24 uur een professionele analyse van je vacature. 
-                Concrete verbeterpunten die direct meer sollicitaties opleveren.
-            </p>
-            <div class="hero-proof">
-                <div class="proof-stat">
-                    <div class="proof-number">500+</div>
-                    <div class="proof-label">Plaatsingen</div>
-                </div>
-                <div class="proof-stat">
-                    <div class="proof-number">48%</div>
-                    <div class="proof-label">Meer Kandidaten</div>
-                </div>
-                <div class="proof-stat">
-                    <div class="proof-number">100%</div>
-                    <div class="proof-label">Gratis</div>
-                </div>
-                <div class="proof-stat">
-                    <div class="proof-number">24u</div>
-                    <div class="proof-label">Resultaat</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="form-section">
-        <div class="form-container">
-            <div class="form-card">
-                <h2 class="form-title">
-                    Start Je Gratis Vacature Analyse
-                </h2>
-                <p class="form-subtitle">
-                    Vul het korte formulier in en ontvang binnen 24 uur je persoonlijke rapport
-                </p>
-                
-                <!-- Typeform embed -->
-                <div data-tf-widget="kalFRTCA" 
-                     data-tf-iframe-props="title=Gratis Vacature Analyse" 
-                     data-tf-medium="snippet" 
-                     style="width:100%;height:600px;">
-                </div>
-                <script src="https://embed.typeform.com/next/embed.js"></script>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                Powered by <span class="footer-brand-accent">Recruitin</span>
-            </div>
-            <div class="footer-tagline">
-                Expert recruitment solutions voor technische vacatures
-            </div>
-            <div class="footer-copyright">
-                © 2025 Recruitin • KandidatenTekort.nl
-            </div>
-        </div>
-    </footer>
-
     <script>
-    // Parse UTM parameters for Typeform
+    // UTM tracking
     (function() {
         const urlParams = new URLSearchParams(window.location.search);
         const utmSource = urlParams.get('utm_source') || '';
         const utmMedium = urlParams.get('utm_medium') || '';
         const utmCampaign = urlParams.get('utm_campaign') || '';
         const utmContent = urlParams.get('utm_content') || '';
-        const stad = utmContent; // City is in utm_content
         
-        // Update Typeform with hidden fields
+        // Pass to Typeform when ready
         window.addEventListener('load', function() {
-            // Get the typeform widget
-            const tfWidget = document.querySelector('[data-tf-widget]');
-            if (tfWidget) {
-                // Add hidden fields as data attributes
-                tfWidget.setAttribute('data-tf-hidden', `utm_source=${utmSource},utm_medium=${utmMedium},utm_campaign=${utmCampaign},utm_content=${utmContent},stad=${stad}`);
-                
-                // Reinitialize if tf is available
-                if (window.tf && window.tf.load) {
-                    window.tf.load();
-                }
-            }
-        });
-        
-        // Track form events
-        window.addEventListener('message', function(event) {
-            if (event.data && event.data.type) {
-                if (event.data.type === 'form-submit') {
-                    // Track Lead event
-                    fbq('track', 'Lead', {
-                        content_name: 'Gratis Vacature Check',
-                        content_category: 'Lead Generation',
-                        value: 249.00,
-                        currency: 'EUR'
-                    });
-                    
-                    // Google Analytics
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'form_submit', {
-                            event_category: 'engagement',
-                            event_label: 'typeform_lead'
-                        });
-                    }
-                }
-                
-                if (event.data.type === 'form-ready' || event.data.type === 'form-screen-changed') {
-                    // Track InitiateCheckout only once
-                    if (!window.formStarted) {
-                        window.formStarted = true;
-                        fbq('track', 'InitiateCheckout');
-                    }
-                }
-            }
-        });
-        
-        // Track ViewContent when user scrolls 50%
-        let viewContentFired = false;
-        window.addEventListener('scroll', function() {
-            if (!viewContentFired) {
-                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-                if (scrollPercent >= 50) {
-                    fbq('track', 'ViewContent');
-                    viewContentFired = true;
-                }
+            const widget = document.querySelector('[data-tf-widget]');
+            if (widget && utmSource) {
+                widget.setAttribute('data-tf-hidden', `utm_source=${utmSource},utm_medium=${utmMedium},utm_campaign=${utmCampaign},utm_content=${utmContent}`);
             }
         });
     })();
