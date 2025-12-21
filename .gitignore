@@ -68,4 +68,6 @@ tmp/
 .pytest_cache/
 
 # Documentation builds
-docs/_build/
+docs/_build/.env*
+*credentials*
+*.secret*
