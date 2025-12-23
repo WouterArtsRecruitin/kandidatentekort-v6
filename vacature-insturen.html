@@ -15,54 +15,58 @@
   <meta property="og:description" content="Stuur je vacaturetekst in en ontvang binnen 24 uur een gratis analyse.">
   <meta property="og:url" content="https://kandidatentekort.nl/vacature-insturen">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://kandidatentekort.nl/og-image.jpg">
 
-  <!-- Google Consent Mode v2 -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('consent', 'default', {
-      'ad_storage': 'denied',
-      'ad_user_data': 'denied',
-      'ad_personalization': 'denied',
-      'analytics_storage': 'denied',
-      'functionality_storage': 'denied',
-      'personalization_storage': 'denied',
-      'security_storage': 'granted',
-      'wait_for_update': 500
-    });
-  </script>
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Vacature Insturen - Gratis Analyse">
+  <meta name="twitter:description" content="Stuur je vacaturetekst in en ontvang binnen 24 uur een gratis analyse.">
 
-  <!-- Cookiebot -->
-  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="255025f6-3932-479b-a9d7-6a4fac614cb8" data-blockingmode="auto" data-culture="nl"></script>
-
-  <!-- GA4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-67PJ02SXVN"></script>
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W6G1NY28BD"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-67PJ02SXVN', {'anonymize_ip': true});
+    gtag('config', 'G-W6G1NY28BD');
   </script>
 
-  <!-- Meta Pixel -->
+  <!-- Meta Pixel Code -->
   <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1735907367288442');
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '238226887541404');
     fbq('track', 'PageView');
   </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=238226887541404&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
 
   <!-- Typeform Embed -->
   <script src="https://embed.typeform.com/next/embed.js"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       min-height: 100vh;
-      color: #333;
+      color: #1e293b;
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
     .container {
@@ -85,8 +89,9 @@
 
     .logo span {
       font-size: 24px;
-      font-weight: 700;
-      color: #0f172a;
+      font-weight: 800;
+      color: #0a1628;
+      letter-spacing: -0.02em;
     }
 
     .logo .highlight {
@@ -95,7 +100,8 @@
 
     h1 {
       font-size: 28px;
-      color: #0f172a;
+      font-weight: 700;
+      color: #0a1628;
       text-align: center;
       margin-bottom: 10px;
     }
@@ -104,6 +110,7 @@
       text-align: center;
       color: #64748b;
       margin-bottom: 30px;
+      font-size: 16px;
     }
 
     .typeform-container {
@@ -120,7 +127,8 @@
     }
 
     .benefits h3 {
-      font-size: 14px;
+      font-size: 13px;
+      font-weight: 600;
       color: #64748b;
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -136,6 +144,7 @@
       padding-left: 24px;
       position: relative;
       color: #475569;
+      font-size: 15px;
     }
 
     .benefits li::before {
@@ -156,6 +165,10 @@
     .footer a {
       color: #FF6B35;
       text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
     }
 
     @media (max-width: 480px) {
@@ -192,7 +205,7 @@
     </div>
 
     <p class="footer">
-      Een initiatief van <a href="https://recruitin.nl" target="_blank">Recruitin B.V.</a>
+      Een initiatief van <a href="https://recruitin.nl" target="_blank" rel="noopener">Recruitin B.V.</a>
     </p>
   </div>
 
@@ -203,20 +216,34 @@
       try {
         const data = event.data;
         if (data.type === 'form-submit') {
-          // Track conversion
+          // GA4 Lead Event
           if (typeof gtag !== 'undefined') {
             gtag('event', 'generate_lead', {
               event_category: 'conversion',
-              event_label: 'typeform_vacature_submit'
+              event_label: 'typeform_vacature_submit',
+              value: 1
             });
           }
+          // Meta Pixel Lead Event
           if (typeof fbq !== 'undefined') {
-            fbq('track', 'Lead', { content_name: 'Vacature Form Submit' });
+            fbq('track', 'Lead', {
+              content_name: 'Vacature Form Submit',
+              content_category: 'Vacature Analyse'
+            });
           }
-          console.log('Lead tracked: Typeform submitted');
         }
-      } catch (e) {}
+      } catch (e) {
+        console.error('Tracking error:', e);
+      }
     });
+
+    // Track page engagement
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'ViewContent', {
+        content_name: 'Vacature Insturen Pagina',
+        content_category: 'Landing Page'
+      });
+    }
   </script>
 </body>
 </html>
